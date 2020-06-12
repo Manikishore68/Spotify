@@ -1,0 +1,57 @@
+<section class="p-3">
+  <div class="container animated zoomInRight  delay-1s">
+    <div class="row">
+      <div class="col">
+        <h5 class="display-4">Spotify Music Search</h5>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur dolorem sed similique? Accusantium alias dolorem eius ex ipsum laudantium odio suscipit tenetur. Animi consequatur doloremque eius et illo illum, maxime nobis nulla officia qui, quidem repellat repellendus tempore voluptas voluptatibus!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Search  Box -->
+  <section class="p-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <form>
+            <div class="form-group">
+              <input  [(ngModel)]="searchQuery" (keyup)="searchArtist()" type="search" name="search" class="form-control" placeholder="search an artist" >
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- ARTIST CARDS -->
+
+<section class="p-3">
+  <div class="container" >
+    <div class="row"*ngFor="let artist of artists">
+      <div class="col" *ngIf="artist.images.length > 0">
+        <div class="card mt-3">
+          <div class="card-header bg-dark text-white">
+            <h3>{{artist.name}}</h3>
+          </div>
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-md-3">
+                <img [src]="artist.images[0].url" class="img-fluid img-thumbnail">
+              </div>
+              <div class="col-md-9">
+                <h1>
+                  <a routerLink="/artists/{{artist.id}}">{{artist.name}}</a>
+                </h1>
+                <p class="h4">Follwers : {{artist.followers.total | number}}</p>
+                <p class="h4">Geners :
+                <span class="badge badge-success mr-2" *ngFor="let genre of artist.genres">{{genre}}</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
